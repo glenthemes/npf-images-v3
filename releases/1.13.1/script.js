@@ -179,11 +179,10 @@ $(document).ready(function(){
         // technically it's the "last" in the reblog chain
         // but bc of how multiple blockquotes are structured,
         // the "last" reblogger name <p> would appear as the first instance
-        $(this).find("a.tumblr_blog[href]").each(function(){
-            let p = $(this).parent();
-            if(p.is("p")){
-                if(!$(this).closest("blockquote").length){
-                    p.attr("last-comment","");
+        $(this).find("p").each(function(i, e){
+            if($(this).find("a.tumblr_blog").length){
+                if(i == 1){
+                    $(this).attr("last-comment","");
                 }
             }
         })
